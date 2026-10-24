@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A free digital library for discovering and reading public-domain books.">
+  <title>Open Shelf — Free Digital Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Open Shelf home"><span class="brand-mark">OS</span><span><strong>Open Shelf</strong><small>A little library for everyone</small></span></a>
+    <nav id="nav">
+      <a href="#home">Home</a><a href="#library">Explore books</a><a href="#mybooks">My uploads</a>
+    </nav>
+    <div class="header-actions">
+      <button class="upload-top" id="uploadTop">＋ Upload a book</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> YOUR FREE DIGITAL LIBRARY</span>
+        <h1>Good books.<br><em>No barriers.</em></h1>
+        <p>Discover timeless stories, read in your browser, and bring your own books to your personal shelf. Always free, always for the love of reading.</p>
+        <div class="hero-actions"><a class="button primary" href="#library">Explore the library <span>→</span></a><button class="button secondary" id="heroUpload">Upload your book <span>＋</span></button></div>
+        <div class="hero-proof"><span>✓ No payment</span><span>✓ No account needed</span><span>✓ Read in your browser</span></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a cozy stack of books">
+        <div class="sun"></div><div class="leaf leaf-one">✦</div><div class="leaf leaf-two">✦</div>
+        <div class="stack-book stack-one"><span>THE ART OF<br>IMAGINATION</span><small>STORIES TO KEEP</small></div>
+        <div class="stack-book stack-two"><span>WONDER<br>AND WISDOM</span><small>A COLLECTION</small></div>
+        <div class="stack-book stack-three"><span>THE OPEN<br>ROAD</span><small>CLASSIC TALES</small></div>
+        <div class="plant-pot"><span>✳</span></div>
+        <div class="art-caption">Every book opens a new world.</div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Library features">
+      <div><strong>100% free</strong><span>Read without paying</span></div><div><strong>In your browser</strong><span>No reader app required</span></div><div><strong>Your own shelf</strong><span>Add personal files</span></div>
+    </section>
+
+    <section class="section library-section" id="library">
+      <div class="section-heading">
+        <div><span class="eyebrow">FIND YOUR NEXT READ</span><h2>The free library</h2><p>Explore classic works available through Project Gutenberg.</p></div>
+        <span class="count" id="bookCount">Books</span>
+      </div>
+      <div class="tools">
+        <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search titles or authors…" aria-label="Search titles or authors"></label>
+        <div class="filters" id="filters">
+          <button class="filter active" data-filter="All">All books</button>
+          <button class="filter" data-filter="Novel">Novels</button>
+          <button class="filter" data-filter="Fantasy">Fantasy</button>
+          <button class="filter" data-filter="Adventure">Adventure</button>
+          <button class="filter" data-filter="Philosophy">Philosophy</button>
+        </div>
+      </div>
+      <div class="book-grid" id="bookGrid" aria-live="polite"></div>
+      <p class="source-note">Public-domain editions are linked to Project Gutenberg. Availability and legal status can vary by country. Check the source page for details.</p>
+    </section>
+
+    <section class="upload-section section" id="mybooks">
+      <div class="upload-copy"><span class="eyebrow">MAKE IT YOURS</span><h2>Your books belong here, too.</h2><p>Upload an EPUB, PDF, or plain-text file to read it in this browser. Your uploads stay in this browser on this device; they are not published for other visitors.</p><ul><li>PDF files open in your browser's built-in viewer.</li><li>EPUB files open in the built-in reader.</li><li>Text files open in a clean, comfortable reading view.</li></ul></div>
+      <div class="upload-card"><div class="upload-icon">↑</div><h3>Add a book to your shelf</h3><p>Choose a file you own or have permission to use.</p><label class="button primary file-button" for="fileInput">Choose book file</label><input id="fileInput" type="file" accept=".pdf,.epub,.txt,.text,application/pdf,application/epub+zip,text/plain" multiple><small>PDF, EPUB, or TXT · files stay on this device</small><div id="uploadStatus" class="upload-status" role="status"></div></div>
+    </section>
+
+    <section class="section my-shelf-section">
+      <div class="section-heading"><div><span class="eyebrow">SAVED ON THIS DEVICE</span><h2>My uploaded books</h2><p>Your private shelf on this browser.</p></div><button class="clear-button" id="clearUploads">Clear shelf</button></div>
+      <div class="upload-list" id="uploadList"><div class="empty-shelf">Your shelf is waiting for its first book.</div></div>
+    </section>
+
+    <section class="quote-band"><span>“</span><p>A room without books is like a body without a soul.</p><small>— Often attributed to Cicero</small></section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#home"><span class="brand-mark">OS</span><span><strong>Open Shelf</strong><small>A little library for everyone</small></span></a><p>Made for readers, by readers.</p><div><a href="#library">Explore</a><a href="#mybooks">My uploads</a><a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer">Project Gutenberg ↗</a></div><small>Free library demo · No payments, checkout, or tracking accounts.</small></footer>
+
+  <dialog id="readerDialog" class="reader-dialog">
+    <div class="reader-header"><div><span class="eyebrow">OPEN SHELF READER</span><h2 id="readerTitle">Reading</h2></div><button id="closeReader" class="icon-button" aria-label="Close reader">×</button></div>
+    <div id="readerContent" class="reader-content"></div>
+    <div class="reader-footer"><span id="readerMeta">Enjoy your reading.</span><button id="readerCloseBottom" class="button primary">Done reading</button></div>
+  </dialog>
+  <dialog id="confirmDialog" class="confirm-dialog"><h2>Clear your uploaded shelf?</h2><p>This removes this website's saved list and locally stored uploads from this browser. This cannot be undone.</p><div class="confirm-actions"><button id="cancelClear" class="button secondary">Cancel</button><button id="confirmClear" class="button danger">Clear shelf</button></div></dialog>
+</body>
+</html>
